@@ -1,0 +1,18 @@
+{
+  "entity": {
+    "select": {
+      "mode": { "default": "mdi:fan-auto" }
+    },
+    "sensor": {
+      "requested_profile": {
+        "default": "mdi:send",
+        "state": { "quiet": "mdi:volume-low", "normal": "mdi:volume-medium" }
+      },
+      "active_profile": {
+        "default": "mdi:fan",
+        "state": { "quiet": "mdi:volume-low", "normal": "mdi:volume-medium" }
+      },
+      "fan_speed": { "default": "mdi:fan" }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "SR655 Fan Control",
+        "description": "Home Assistant tells the NAS-side fan controller whether to run its quiet or normal profile. Install and start the NAS-side package first; the topic prefix must match the topics in its config.json.",
+        "data": {
+          "name": "Name",
+          "topic_prefix": "MQTT topic prefix",
+          "presence_entity": "Presence entity",
+          "away_delay": "Quiet for this long after the last person leaves",
+          "heartbeat_interval": "Heartbeat interval"
+        },
+        "data_description": {
+          "topic_prefix": "Publishes to <prefix>/profile/set and listens on <prefix>/profile, /availability and /telemetry.",
+          "presence_entity": "Quiet while this entity is on or home; normal once it has been off or away for the delay below.",
+          "away_delay": "Minutes. Use 0 to switch to normal as soon as everyone has left.",
+          "heartbeat_interval": "Seconds. The profile is re-sent this often. The NAS falls back to normal after 120 s without a request, so keep this well below that."
+        }
+      }
+    },
+    "error": {
+      "invalid_topic": "The topic prefix must not be empty or contain spaces, #, + or $."
+    },
+    "abort": {
+      "already_configured": "This topic prefix is already configured.",
+      "mqtt_not_configured": "The MQTT integration must be set up first."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "SR655 Fan Control options",
+        "data": {
+          "presence_entity": "Presence entity",
+          "away_delay": "Quiet for this long after the last person leaves",
+          "heartbeat_interval": "Heartbeat interval"
+        },
+        "data_description": {
+          "presence_entity": "Quiet while this entity is on or home; normal once it has been off or away for the delay below.",
+          "away_delay": "Minutes. Use 0 to switch to normal as soon as everyone has left.",
+          "heartbeat_interval": "Seconds. Keep well below the NAS fallback of 120 s."
+        }
+      }
+    }
+  },
+  "entity": {
+    "select": {
+      "mode": {
+        "name": "Mode",
+        "state": {
+          "auto": "Auto (follow presence)",
+          "quiet": "Quiet",
+          "normal": "Normal"
+        }
+      }
+    },
+    "sensor": {
+      "requested_profile": {
+        "name": "Requested profile",
+        "state": { "quiet": "Quiet", "normal": "Normal" }
+      },
+      "active_profile": {
+        "name": "Active profile",
+        "state": { "quiet": "Quiet", "normal": "Normal" }
+      },
+      "temperature": { "name": "{sensor} temperature" },
+      "fan_speed": { "name": "Fan {fan} speed" }
+    },
+    "binary_sensor": {
+      "link": { "name": "NAS link" },
+      "problem": { "name": "Controller problem" }
+    }
+  }
+}

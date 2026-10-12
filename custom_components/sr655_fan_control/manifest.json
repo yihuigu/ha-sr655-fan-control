@@ -1,0 +1,13 @@
+{
+  "domain": "sr655_fan_control",
+  "name": "SR655 Fan Control",
+  "codeowners": ["@yihuigu"],
+  "config_flow": true,
+  "dependencies": ["mqtt"],
+  "documentation": "https://github.com/yihuigu/ha-sr655-fan-control",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/yihuigu/ha-sr655-fan-control/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
