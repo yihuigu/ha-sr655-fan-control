@@ -20,3 +20,5 @@ jobs:
       - uses: hacs/action@main
         with:
           category: integration
+          # No license on purpose; the check only matters for the default HACS store.
+          ignore: license
